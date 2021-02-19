@@ -1,4 +1,7 @@
 module.exports = {
+  flags: {
+    DEV_SSR: false,
+  },
   siteMetadata: {
     title: 'Galway Rain',
     description: 'How often does it rain, really?',
@@ -9,5 +12,6 @@ module.exports = {
     'gatsby-plugin-sass',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-smoothscroll',
   ],
 };
