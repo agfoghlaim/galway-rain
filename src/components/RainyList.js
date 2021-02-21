@@ -1,12 +1,11 @@
 import React from 'react';
 import classes from './rainyList.module.scss';
-
+import { niceDate } from '../../util';
 export default function RainyList({ data }) {
   return (
     <div className={classes.rainWrap}>
       {data.allRainyDay.nodes.map((rainyDay) => {
-        const dateInFormatFirefoxLikes = rainyDay.date.replace(/-/g,'/');
-        const date = new Date(dateInFormatFirefoxLikes).toString().substring(0, 15);
+        const date = niceDate(rainyDay.date);
         if (+rainyDay.rain > 0) {
           return (
             <div

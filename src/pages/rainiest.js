@@ -16,7 +16,12 @@ export default function RainiestPage({ data }) {
           The rainiest days since 2010.{' '}
           <span>Data from Athenry weather station.</span>
         </h1>
-        <Link to="/">See all days in order</Link>
+        <nav>
+
+        <Link to="/">Home - See all days in order</Link>
+        <Link to="/rainiest" style={{color: 'var(--orange)'}}>The Rainiest Days</Link>
+        <Link to="/rain-sweeper" >RainSweeper</Link>
+        </nav>
       </header>
       <main>
         <RainyList data={data} />

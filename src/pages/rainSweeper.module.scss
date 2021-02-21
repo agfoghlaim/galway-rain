@@ -1,0 +1,109 @@
+.gameOver {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-items: center;
+  font-weight: 800;
+
+  button {
+    background: var(--black);
+    color: var(--white);
+    border: 0.1rem solid var(--white);
+    padding: 0.4rem 0.9rem;
+    border-radius: 0.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    cursor: pointer;
+    transition: all 0.1s ease-out;
+    line-height: 1.5;
+    font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    &:hover {
+      color: var(--green);
+      border-color: var(--green);
+    }
+  }
+  .temp1 {
+    display: block;
+  }
+  .temp2 {
+    display: block;
+    font-size: 0.6rem;
+    color: var(--green);
+  }
+}
+.rainSweeperWrap {
+  background: var(--gray);
+  padding: 2rem 0;
+  display: grid;
+  place-content: center;
+  grid-auto-flow: row;
+  grid-template-rows: 4rem 1fr;
+}
+.sweepWrap {
+  display: grid;
+  place-content: center;
+  padding: 0.2rem;
+  background: var(--gray);
+
+  // grid-template-columns: repeat(10, 50px);
+  grid-auto-rows: 3rem;
+  grid-gap: 0.1rem;
+  div {
+    border-radius: 0.2rem;
+    display: grid;
+    align-content: flex-end;
+    justify-content: center;
+    grid-auto-flow: column;
+    transition: background 0.15s ease-out;
+    padding: 0.2rem;
+    position: relative;
+    cursor: pointer;
+
+    .date {
+      font-size: 0.55rem;
+      position: absolute;
+      top: 0;
+      left: 0.2rem;
+      font-weight: 600;
+    }
+    .nasties {
+      font-size: 0.9rem;
+      font-weight: bold;
+      // background: var(--red);
+      width: 1.1rem;
+      padding: 0.2rem;
+      height: 1.1rem;
+      display: grid;
+      place-content: center;
+      border-radius: 0.2rem;
+      // align-self: center;
+      // justify-self: center;
+    }
+    .spanWrap {
+      display: grid;
+      grid-auto-flow: column;
+      place-content: center;
+      align-self: flex-end;
+    }
+    span[role='img'] {
+    }
+    span[aria-label='Umbrella emoji'] {
+      font-size: 0.8rem;
+    }
+  }
+  .wetSquare {
+    // border: 0.1rem solid white;
+    border-style: inset;
+  }
+  .drySquare {
+    // border: 0.1rem solid white;
+    border-style: inset;
+    background: var(--white);
+  }
+  .checked {
+    background: none;
+    transition: none;
+  }
+}

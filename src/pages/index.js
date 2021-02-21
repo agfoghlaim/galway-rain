@@ -16,7 +16,12 @@ export default function IndexPage({ data }) {
           Was it raining or not (since 2010)?
           <span>Data from Athenry weather station</span>
         </h1>
-        <Link to="/rainiest">Go to Rainiest Days</Link>
+        <nav>
+
+        <Link to="/" style={{color: 'var(--orange)'}}>Home - See all days in order</Link>
+        <Link to="/rainiest" >The Rainiest Days</Link>
+        <Link to="/rain-sweeper" >RainSweeper</Link>
+        </nav>
       </header>
       <main>
         <RainyList data={data} />
