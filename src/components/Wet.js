@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { sweeperDate } from '../../util';
 
-export default function Wet({ data, handleWetClick, classes, game }) {
+export default function Wet({
+  data,
+  handleWetClick,
+  classes,
+  game,
+  handleKeyboard,
+}) {
   const [flagged, setFlagged] = useState(false);
 
   function localHandleClick(e) {
@@ -16,16 +22,40 @@ export default function Wet({ data, handleWetClick, classes, game }) {
       handleWetClick(data, e, flagged);
     }
   }
+
+  function localHandleKeyboard(e) {
+    if (e.key === 'Escape') {
+      document.activeElement.parentElement.focus();
+    }
+
+    if (e.keyCode === 32) {
+      // space
+      setFlagged(!flagged);
+      return;
+    }
+    if (e.key === 'Enter') {
+      handleWetClick(data, e);
+    }
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+    
+      handleKeyboard(data, e);
+    }
+    return;
+  }
+
   return (
     <div
+      id={data.i}
+      tabIndex={data.i === 0 ? '0' : '-1'}
       style={{
-        // background: `${data.checked ? 'none' : 'rgb(240,240,240)'}`,
-        background: `${data.checked ? 'none' : '#fff'}`,
+        background: `${data.checked ? 'none' : 'rgb(230,230,230)'}`,
+        // background: `${data.checked ? 'none' : '#fff'}`,
         border: `${data.culprit ? '0.2rem solid var(--red)' : ''}`,
       }}
       className={classes.wetSquare}
       onClick={(e) => localHandleClick(e)}
       onContextMenu={(e) => localHandleClick(e)}
+      onKeyDown={(e) => localHandleKeyboard(e)}
     >
       {flagged && (
         <span role="img" aria-label="Umbrella emoji">

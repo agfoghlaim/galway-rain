@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   shuffleArray,
   getNeighbourToThe,
@@ -9,7 +9,18 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Wet from '../components/Wet';
 import Dry from '../components/Dry';
 
-import { DIRECTIONS, NUM_DAYS_IN_ROW, NUM_DAYS_IN_GAME } from '../../constants';
+import { DIRECTIONS } from '../../constants';
+import GameInfo from './GameInfo';
+
+/**
+ *
+ * Make sure that NUM_DAYS_IN_ROW is a factor of NUM_DAYS_IN_A_GAME otherwise the board won't be even and bad things that i haven't checked for will probably happen.
+ *
+ */
+
+// Quick and filty solution to give people on mobile a chance.
+export const NUM_DAYS_IN_ROW = window.innerWidth > 500 ? 10 : 5;
+export const NUM_DAYS_IN_GAME = window.innerWidth > 500 ? 100 : 100;
 
 /**
  *
@@ -66,11 +77,14 @@ const RainSweeper = ({ classes, width }) => {
   const shuffled = shuffleArray(allData).slice(0, NUM_DAYS_IN_GAME);
 
   function startNewGame() {
-		// TODO....
+    // TODO....
   }
+
+  const skipRef = useRef(null);
 
   // !game means game over.
   const [game, setGame] = useState(true);
+  const [win, setWin] = useState(false);
 
   // Data actually used in the game. Will be NUM_DAYS_IN_GAME long.
   const [realData, setRealData] = useState();
@@ -100,8 +114,9 @@ const RainSweeper = ({ classes, width }) => {
     const isGameOver = checkGameOver();
     if (isGameOver) {
       setGame(false);
+      setWin(true);
     }
-  }, [setGame, game, realData]);
+  }, [setGame, game, realData, setWin]);
 
   function handleWetClick(data, e) {
     e.preventDefault();
@@ -138,7 +153,7 @@ const RainSweeper = ({ classes, width }) => {
     setRealData(updated);
   }
 
-  function handleDryClick(datum, e) {
+  function handleDryClick(datum) {
     const isChecked = KEEP_TRACK.filter((w) => w === datum.i);
 
     // return if this day has already been checked
@@ -165,38 +180,69 @@ const RainSweeper = ({ classes, width }) => {
       // Find days in each direction, 'click' on them.
       DIRECTIONS.forEach((direction) => {
         if (shouldCheckInThisDirection(datum.i)[direction]()) {
-          const thisOne = getNeighbourToThe(datum.i, direction);
+          const thisOne = getNeighbourToThe(
+            datum.i,
+            direction,
+            NUM_DAYS_IN_GAME,
+            NUM_DAYS_IN_ROW
+          );
           handleDryClick(realData[thisOne]);
         }
       });
     }
   }
+  function setTheFocus(current) {
+    return {
+      down: () => {
+        const swichFocusTo = document.getElementById(current + NUM_DAYS_IN_ROW);
+        if (!swichFocusTo) return;
+        swichFocusTo.focus();
+      },
+      up: () => {
+        const swichFocusTo = document.getElementById(current - NUM_DAYS_IN_ROW);
+        if (!swichFocusTo) return;
+        swichFocusTo.focus();
+      },
+      left: () => {
+        const swichFocusTo = document.getElementById(current - 1);
+        if (!swichFocusTo) return;
+        swichFocusTo.focus();
+      },
+      right: () => {
+        const swichFocusTo = document.getElementById(current + 1);
+        if (!swichFocusTo) return;
+        swichFocusTo.focus();
+      },
+    };
+  }
+
+  function handleKeyboard( _, e) {
+    if (e.key === 'ArrowDown') {
+      setTheFocus(+document.activeElement.id).down();
+    }
+    if (e.key === 'ArrowUp') {
+      setTheFocus(+document.activeElement.id).up();
+    }
+    if (e.key === 'ArrowRight') {
+      setTheFocus(+document.activeElement.id).right();
+    }
+    if (e.key === 'ArrowLeft') {
+      setTheFocus(+document.activeElement.id).left();
+    }
+  }
 
   return (
     <div className={classes.rainSweeperWrap}>
-      <div className={classes.gameOver}>
-        {!game && (
-          <>
-            <p>
-              <span role="img" aria-label="Unbrella emoji">
-                ☂️
-              </span>
-              Game Over
-              <span role="img" aria-label="Sob emoji">
-                😭
-              </span>
-              <span className={classes.temp2}>Refresh page for new game</span>
-            </p>
-
-            <button onClick={() => startNewGame()}>
-              <span className={classes.temp1}>New Game</span>
-              <span className={classes.temp2}>Button coming soon!</span>
-            </button>
-          </>
-        )}
-      </div>
+      <GameInfo
+        classes={classes}
+        startNewGame={startNewGame}
+        game={game}
+        win={win}
+      />
 
       <div
+        tabIndex="0"
+        ref={skipRef}
         className={classes.sweepWrap}
         style={{ gridTemplateColumns: `repeat(${NUM_DAYS_IN_ROW}, 3rem)` }}
       >
@@ -206,6 +252,8 @@ const RainSweeper = ({ classes, width }) => {
             if (rainyDay.rain > 0) {
               return (
                 <Wet
+                  setTheFocus={setTheFocus}
+                  handleKeyboard={handleKeyboard}
                   game={game}
                   classes={classes}
                   key={i}
@@ -217,6 +265,8 @@ const RainSweeper = ({ classes, width }) => {
             } else {
               return (
                 <Dry
+                  handleKeyboard={handleKeyboard}
+                  setTheFocus={setTheFocus}
                   classes={classes}
                   key={i}
                   handleDryClick={handleDryClick}

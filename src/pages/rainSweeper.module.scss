@@ -1,9 +1,14 @@
-.gameOver {
+.gameInfo {
   display: grid;
   grid-auto-flow: column;
   align-items: center;
   justify-items: center;
+  justify-content: space-between;
   font-weight: 800;
+  color: var(--white);
+  font-size: 1.3rem;
+  .gameInfoText {
+  }
 
   button {
     background: var(--black);
@@ -29,21 +34,22 @@
   }
   .temp2 {
     display: block;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     color: var(--green);
   }
 }
 .rainSweeperWrap {
-  background: var(--gray);
-  padding: 2rem 0;
+  background: var(--black);
+  padding: 1rem 0;
   display: grid;
   place-content: center;
   grid-auto-flow: row;
-  grid-template-rows: 4rem 1fr;
+  grid-template-rows: 5rem 1fr;
 }
 .sweepWrap {
   display: grid;
   place-content: center;
+  // position: relative;
   padding: 0.2rem;
   background: var(--gray);
 
@@ -61,6 +67,20 @@
     position: relative;
     cursor: pointer;
 
+    &:focus {
+      // tried to hide focus for mouse only but things get messy.
+      // leave the focus alone.
+    }
+    // &:focus:not(:focus-visible) {
+    //   // unset the above
+    //   // outline: unset;
+    // }
+
+    // // when being controlled by keyboard use default browser focus.
+    // &:focus-visible {
+    //   outline: 0.1rem solid var(--black);
+    // }
+
     .date {
       font-size: 0.55rem;
       position: absolute;
@@ -71,15 +91,12 @@
     .nasties {
       font-size: 0.9rem;
       font-weight: bold;
-      // background: var(--red);
       width: 1.1rem;
       padding: 0.2rem;
       height: 1.1rem;
       display: grid;
       place-content: center;
       border-radius: 0.2rem;
-      // align-self: center;
-      // justify-self: center;
     }
     .spanWrap {
       display: grid;
@@ -87,23 +104,35 @@
       place-content: center;
       align-self: flex-end;
     }
-    span[role='img'] {
-    }
+
     span[aria-label='Umbrella emoji'] {
       font-size: 0.8rem;
     }
   }
   .wetSquare {
-    // border: 0.1rem solid white;
-    border-style: inset;
+    background: var(--white);
   }
   .drySquare {
-    // border: 0.1rem solid white;
-    border-style: inset;
     background: var(--white);
   }
   .checked {
-    background: none;
+    border: 0.2rem solid white;
+    border-style: inset;
+    background: var(--gray);
     transition: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .rainSweeperWrap {
+     grid-template-rows: auto 1fr;
+
+  }
+  .gameInfo {
+    grid-auto-flow: row;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+
   }
 }

@@ -1,4 +1,7 @@
-import {NUM_DAYS_IN_ROW, NUM_DAYS_IN_GAME } from './constants';
+import {
+  NUM_DAYS_IN_ROW,
+  NUM_DAYS_IN_GAME,
+} from './src/components/RainSweeper';
 
 export function niceDate(string, short = false) {
   // todo: think toDateString() is one of these!
@@ -15,12 +18,12 @@ export function sweeperDate(string) {
   const dateInFormatFirefoxLikes = string.replace(/-/g, '/');
 
   // eg 11 Feb 18
-  return new Date(dateInFormatFirefoxLikes)
-    .toLocaleString('en-GB', {
-      day: 'numeric',
-      month: 'short',
-      year: '2-digit',
-    });
+
+  return new Date(dateInFormatFirefoxLikes).toLocaleString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: '2-digit',
+  });
 }
 
 /**
@@ -28,14 +31,12 @@ export function sweeperDate(string) {
  * @link https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
  */
 export function shuffleArray(a) {
-	for (let i = a.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[a[i], a[j]] = [a[j], a[i]];
-	}
-	return a;
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
-
-
 
 /**
  * ==============
@@ -50,7 +51,6 @@ function isRight(num) {
   return num % NUM_DAYS_IN_ROW === NUM_DAYS_IN_ROW - 1;
 }
 function isTop(num) {
-  // console.log(`is top checking ${num} returning ${num < NUM_DAYS_IN_ROW}`);
   return num < NUM_DAYS_IN_ROW;
 }
 function isBottom(num) {
@@ -69,8 +69,6 @@ export function getNeighbourToThe(i, direction) {
   };
   return neighbours[direction];
 }
-
-
 
 export function shouldCheckInThisDirection(i) {
   /**
