@@ -48,8 +48,8 @@ export default function Wet({
       id={data.i}
       tabIndex={data.i === 0 ? '0' : '-1'}
       style={{
-        background: `${data.checked ? 'none' : 'rgb(230,230,230)'}`,
-        // background: `${data.checked ? 'none' : '#fff'}`,
+        // background: `${data.checked ? 'none' : 'rgb(230,230,230)'}`,
+         background: `${data.checked ? 'none' : '#fff'}`,
         border: `${data.culprit ? '0.2rem solid var(--red)' : ''}`,
       }}
       className={classes.wetSquare}
