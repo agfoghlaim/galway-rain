@@ -19,8 +19,10 @@ import GameInfo from './GameInfo';
  */
 
 // Quick and filty solution to give people on mobile a chance.
-export const NUM_DAYS_IN_ROW = window.innerWidth > 500 ? 10 : 5;
-export const NUM_DAYS_IN_GAME = window.innerWidth > 500 ? 100 : 100;
+export const NUM_DAYS_IN_ROW = 8;
+export const NUM_DAYS_IN_GAME =  96;
+// export const NUM_DAYS_IN_ROW = window.innerWidth > 500 ? 10 : 5;
+// export const NUM_DAYS_IN_GAME = window.innerWidth > 500 ? 100 : 100;
 
 /**
  *
@@ -244,7 +246,7 @@ const RainSweeper = ({ classes, width }) => {
         tabIndex="0"
         ref={skipRef}
         className={classes.sweepWrap}
-        style={{ gridTemplateColumns: `repeat(${NUM_DAYS_IN_ROW}, 3rem)` }}
+        style={{ gridTemplateColumns: `repeat(${NUM_DAYS_IN_ROW}, 2.8rem)` }}
       >
         {realData?.length &&
           realData.map((rainyDay, i) => {

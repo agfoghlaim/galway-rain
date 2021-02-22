@@ -49,12 +49,9 @@
 .sweepWrap {
   display: grid;
   place-content: center;
-  // position: relative;
   padding: 0.2rem;
   background: var(--gray);
-
-  // grid-template-columns: repeat(10, 50px);
-  grid-auto-rows: 3rem;
+  grid-auto-rows: 2.8rem;
   grid-gap: 0.1rem;
   div {
     border-radius: 0.2rem;
