@@ -20,7 +20,7 @@ import GameInfo from './GameInfo';
 
 // Quick and filty solution to give people on mobile a chance.
 export const NUM_DAYS_IN_ROW = 8;
-export const NUM_DAYS_IN_GAME =  96;
+export const NUM_DAYS_IN_GAME = 96;
 // export const NUM_DAYS_IN_ROW = window.innerWidth > 500 ? 10 : 5;
 // export const NUM_DAYS_IN_GAME = window.innerWidth > 500 ? 100 : 100;
 
@@ -218,7 +218,8 @@ const RainSweeper = ({ classes, width }) => {
     };
   }
 
-  function handleKeyboard( _, e) {
+  function handleKeyboard(_, e) {
+    e.preventDefault();
     if (e.key === 'ArrowDown') {
       setTheFocus(+document.activeElement.id).down();
     }

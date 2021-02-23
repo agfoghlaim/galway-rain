@@ -50,12 +50,15 @@
   display: grid;
   place-content: center;
   padding: 0.2rem;
+  border-radius: 0.2rem;
   background: var(--gray);
   grid-auto-rows: 2.8rem;
   grid-gap: 0.1rem;
   div {
     border-radius: 0.2rem;
     display: grid;
+    // border: 0.1rem solid #e1e1e1;
+
     align-content: flex-end;
     justify-content: center;
     grid-auto-flow: column;
@@ -79,7 +82,8 @@
     // }
 
     .date {
-      font-size: 0.55rem;
+      font-size: 0.5rem;
+      color: var(--black);
       position: absolute;
       top: 0;
       left: 0.2rem;
@@ -113,7 +117,7 @@
     background: var(--white);
   }
   .checked {
-    border: 0.2rem solid white;
+    border: 0.1rem solid white;
     border-style: inset;
     background: var(--gray);
     transition: none;

@@ -29,6 +29,7 @@ export default function Dry({
   }
 
   function localHandleKeyboard(e) {
+    e.preventDefault();
     if (e.key === 'Escape') {
       document.activeElement.parentElement.focus();
     }

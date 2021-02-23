@@ -11,11 +11,11 @@ export default function Wet({
   const [flagged, setFlagged] = useState(false);
 
   function localHandleClick(e) {
+    e.preventDefault();
     if (!game) return;
 
     // Right Click | just set flag.
     if (e.type === 'contextmenu') {
-      e.preventDefault();
       setFlagged(!flagged);
       return;
     } else {
@@ -24,6 +24,7 @@ export default function Wet({
   }
 
   function localHandleKeyboard(e) {
+    e.preventDefault();
     if (e.key === 'Escape') {
       document.activeElement.parentElement.focus();
     }
