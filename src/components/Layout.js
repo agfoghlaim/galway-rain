@@ -20,7 +20,7 @@ function Layout({ children }) {
   );
 
   return (
-    <div class="wrap-page">
+    <div className="wrap-page">
       <Header
         siteTitle={data.site.siteMetadata.title}
         siteDescription={data.site.siteMetadata.description}
