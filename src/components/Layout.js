@@ -20,7 +20,7 @@ function Layout({ children }) {
   );
 
   return (
-    <>
+    <div class="wrap-page">
       <Header
         siteTitle={data.site.siteMetadata.title}
         siteDescription={data.site.siteMetadata.description}
@@ -38,7 +38,7 @@ function Layout({ children }) {
       >
         Marie {new Date().getFullYear()}
       </footer>
-    </>
+    </div>
   );
 }
 

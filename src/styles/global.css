@@ -13,6 +13,11 @@
   --blue: #396fb4;
   --lightBlue: #00e1ff;
 }
+
+html {
+  overflow-x:hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -20,6 +25,9 @@ body {
   overflow-x: hidden;
 }
 
+.wrap-page {
+  overflow-x: hidden;
+}
 main {
   min-height: 100vh;
   max-width: 1200px;
