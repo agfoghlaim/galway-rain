@@ -1,23 +1,22 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 
-import SEO from '../components/seo';
-
 import '../styles/global.css';
-import  BackToTop  from '../components/BackToTop';
-import  { RainyList } from '../components';
+
+import SEO from '../components/seo';
+import BackToTop from '../components/BackToTop';
+import { RainyList } from '../components';
 
 export default function RainiestPage({ data }) {
   return (
     <>
       <SEO pageTitle="The Rainest Days" />
 
-
       <main>
-      <h1>
-        The rainiest days since 2010.{' '}
-        <span>Data from Athenry weather station.</span>
-      </h1>
+        <h1>
+          The rainiest days since 2010.{' '}
+          <span>Data from Athenry weather station.</span>
+        </h1>
         <RainyList data={data} />
       </main>
       <BackToTop />

@@ -6,6 +6,8 @@ import '../styles/global.css';
 import SEO from '../components/seo';
 import BackToTop from '../components/BackToTop';
 import { RainyList } from '../components';
+import { SimplePagination } from '../components';
+
 
 export default function IndexPage({ data }) {
   return (
@@ -17,6 +19,7 @@ export default function IndexPage({ data }) {
           Was it raining or not (since 2010)?
           <span>Data from Athenry weather station</span>
         </h1>
+        <SimplePagination nextYear="2011" />
         <RainyList data={data} />
       </main>
       <BackToTop />
@@ -24,13 +27,25 @@ export default function IndexPage({ data }) {
   );
 }
 
+// original query
+// export const query = graphql`
+//   query MyQuery {
+//     allRainyDay {
+//       nodes {
+//         rain
+//         date
+//         id
+//       }
+//     }
+//   }
+// `;
+
 export const query = graphql`
-  query MyQuery {
-    allRainyDay {
+  query twentyTen {
+    allRainyDay(filter: { date: { regex: "/2010/" } }) {
       nodes {
         rain
         date
-        id
       }
     }
   }
