@@ -5,13 +5,14 @@
   display: none;
   flex-direction: column;
   justify-content: space-around;
-  width: 2rem;
-  height: 2rem;
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
   z-index: 10;
+  border-radius: 0.2rem;
 
   div {
     width: 2rem;
@@ -35,5 +36,11 @@
   }
   .burger {
     display: flex;
+    &:focus {
+      // outline: 0.1rem solid var(--blue);
+      // box-shadow: 0 0 0 3px rgb(57,111,180, 0.2);
+      // border: 0.1rem solid rgba(57,111,180,.5);
+    }
   }
+  
 }

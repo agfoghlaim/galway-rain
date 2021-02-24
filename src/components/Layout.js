@@ -5,6 +5,7 @@ import '../styles/global.css';
 import { Header } from '/';
 
 function Layout({ children }) {
+ 
   // via static query
   const data = useStaticQuery(
     graphql`

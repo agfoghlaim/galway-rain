@@ -1,11 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import { Link } from 'gatsby';
 import classes from './header.module.scss';
 import { Burger, Nav } from '../';
 import { useClickToCloseNav } from '../../hooks/useClickToCloseNav';
 
-function Header({ siteTitle, siteDescription }) {
+function Header({ siteTitle, siteDescription }, props) {
+
   const [navOpen, setNavOpen] = useState(false);
   const anywhereOnThePage = useRef(null);
   useClickToCloseNav(anywhereOnThePage, () => setNavOpen(false));

@@ -17,10 +17,27 @@
         font-size: 1rem;
         font-weight: 500;
         white-space: nowrap;
+        border-radius:  0.2rem;
+        padding: 0.1rem 0.3rem;
       }
+
+      a:hover, a:focus {
+        background: var(--black);
+        color: var(--orange);
+      }
+      // TODO: investigate - both aria-current and .activePage get lost on page refresh...
+      a[aria-current="page"] {
+    
+        text-decoration: underline;
+        text-decoration-color: var(--black);
+        text-decoration-thickness: 0.2rem ;
+        text-underline-offset: 0.5rem;
+      }
+      
     }
   }
 }
+
 @media (max-width: 560px) {
   .nav.open {
     transform: translateX(0%);
@@ -39,10 +56,11 @@
 
     ul {
       grid-auto-flow: row;
+      grid-gap: 3rem;
       li {
         a {
           font-size: 1.2rem;
-          padding: 2rem 0;
+          padding: 1rem 0;
           transition: color 0.3s linear;
 
           &:hover {

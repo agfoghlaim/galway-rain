@@ -56,6 +56,14 @@ main > h1 > span {
   box-sizing: border-box;
 }
 *:focus {
-  outline-offset: 0.2rem;
-  outline: 0.1rem dotted var(--blue);
+  /* outline-offset: 0.2rem;*/
+   outline: 0.1rem dashed var(--blue); 
+/*   */
 }
+
+/* nav > ul > li > a.am-active {
+  text-decoration: underline;
+  text-decoration-color: var(--black);
+  text-decoration-thickness: 0.2rem ;
+  text-underline-offset: 0.5rem;
+} */
