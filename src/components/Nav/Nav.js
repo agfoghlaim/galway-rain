@@ -6,7 +6,7 @@ const links = [
   { id: 'li-1', name: 'Home', to: '/', tabindex: '0' },
   { id: 'li-2', name: 'Rainest', to: '/rainiest', tabindex: '0' },
   { id: 'li-3', name: 'Sweeper', to: '/sweeper', tabindex: '0' },
-  { id: 'li-4', name: 'Test 2020', to: '/2020', tabindex: '0' },
+  // { id: 'li-4', name: 'Test 2020', to: '/2020', tabindex: '0' },
 ];
 
 export default function Nav({

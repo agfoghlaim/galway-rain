@@ -22,7 +22,8 @@
       }
 
       a:hover,
-      a:focus {
+      a:focus,
+      a:active {
         background: var(--black);
         color: var(--orange);
       }
