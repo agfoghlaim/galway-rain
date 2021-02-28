@@ -44,6 +44,7 @@ export const query = graphql`
   query twentyTen {
     allRainyDay(filter: { date: { regex: "/2010/" } }) {
       nodes {
+        id
         rain
         date
       }

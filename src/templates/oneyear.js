@@ -9,8 +9,7 @@ import { RainyList } from '../components';
 import { SimplePagination } from '../components';
 
 export default function OneYearTemplate({ data, pageContext }) {
-	console.log(data)
-  console.log(pageContext)
+
   const {year, prevYear, nextYear} = pageContext;
 
   return (

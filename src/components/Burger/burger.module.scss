@@ -14,7 +14,7 @@
   z-index: 10;
   border-radius: 0.2rem;
 
-  div {
+  span {
     width: 2rem;
     height: 0.25rem;
     background: var(--black);
@@ -36,11 +36,6 @@
   }
   .burger {
     display: flex;
-    &:focus {
-      // outline: 0.1rem solid var(--blue);
-      // box-shadow: 0 0 0 3px rgb(57,111,180, 0.2);
-      // border: 0.1rem solid rgba(57,111,180,.5);
-    }
+
   }
-  
 }

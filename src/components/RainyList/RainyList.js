@@ -5,6 +5,7 @@ export default function RainyList({ data }) {
   return (
     <div className={classes.rainWrap}>
       {data.allRainyDay.nodes.map((rainyDay) => {
+  
         // if(rainyDay.date.contains('01-jan-'))
         const date = niceDate(rainyDay.date);
         if (+rainyDay.rain > 0) {
